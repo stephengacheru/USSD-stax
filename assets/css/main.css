@@ -665,20 +665,20 @@ a:hover{
     border-radius: 10px;
 }
 
-.blog-post-thumb img{
+.blog-post-thumb .featured-img{
     width: 100% ;
     height: auto;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
 
-.blog-post-thumb h3{
+.blog-post-thumb .title{
     font-weight: 400;
     padding:20px;
     font-size: 22px;
     line-height: 30px;
 }
-.blog-post-thumb h3 a{
+.blog-post-thumb .title a{
     color: #fff;
     text-decoration: none;
 }
