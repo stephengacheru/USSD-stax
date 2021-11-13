@@ -777,9 +777,13 @@ a:hover{
 .try h3{
     padding-bottom: 15px;
 }
+.try h4{
+   font-size: 27px;
+   padding-bottom: 10px;
+}
 
 .screen{
-    top:300px;
+    top:200px;
     left:-50px;
     position: absolute;
  }
@@ -850,6 +854,9 @@ a:hover{
 }
 
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
+    .try h4{
+        font-size: 30px;
+     }
     .screen img{
         width: 100%;
         height: auto;
