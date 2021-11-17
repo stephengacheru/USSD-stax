@@ -1,5 +1,5 @@
-const root_url = "http://localhost:3000/";
-let countries = [], country = null, channels = [];
+const root_url = "https://stage.usehover.com/";
+let countries = [],	country = null, channels = [];
 
 function load(url, callback, errorCallback) { $.ajax({type: "GET", url: url, success: callback, errorCallback }); }
 
