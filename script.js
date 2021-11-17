@@ -1,5 +1,6 @@
 const root_url = "http://localhost:3000/";
-let countries = [], country = null, channels = [];
+let countries = [{"name":"Bangladesh","alpha2":"BD"},{"name":"Cameroon","alpha2":"CM"},{"name":"Congo (Democratic Republic of the)","alpha2":"CD"},{"name":"Côte d'Ivoire","alpha2":"CI"},{"name":"Ethiopia","alpha2":"ET"},{"name":"Gabon","alpha2":"GA"},{"name":"Ghana","alpha2":"GH"},{"name":"India","alpha2":"IN"},{"name":"Kenya","alpha2":"KE"},{"name":"Mozambique","alpha2":"MZ"},{"name":"Nigeria","alpha2":"NG"},{"name":"Pakistan","alpha2":"PK"},{"name":"South Africa","alpha2":"ZA"},{"name":"Tanzania, United Republic of","alpha2":"TZ"},{"name":"Uganda","alpha2":"UG"},{"name":"Zambia","alpha2":"ZM"},{"name":"Zimbabwe","alpha2":"ZW"}], 
+	country = null, channels = [];
 
 function load(url, callback, errorCallback) { $.ajax({type: "GET", url: url, success: callback, errorCallback }); }
 
@@ -82,4 +83,4 @@ function channelsError() {
 	$("#channels-loading").text("Network error, please reload.")
 }
 
-loadCountries();
+onLoadCountries(countries);
