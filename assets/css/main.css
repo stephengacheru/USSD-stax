@@ -272,6 +272,15 @@ a:hover{
     width: 81%;
 }
 
+.main-home-dropdown-container .dropdown-menu{
+    transform: translate3d(0px, -49px, 0px) !important;
+}
+
+.main-home-dropdown-container .dropdown-menu {
+    max-height: 450px;
+    overflow-y: scroll !important;
+}
+
 .top-nav-dropdown-container{
     border: 3px solid #F1F1F4;
     border-radius: 10px;
