@@ -7,18 +7,25 @@ function loadCountries() {
 	load(root_url + "api/countries?channels=true", onLoadCountries, countriesError); 
 }
 
-function loadChannels() { 
-	const urlParams = new URLSearchParams(window.location.search);
-	if (urlParams.get("country")) {
-		country = countries.find(c => { return c.alpha2.toUpperCase() === urlParams.get("country").toUpperCase(); });
-	}
+function loadChannels() {
+	if (window.location.href.includes("ussd-codes")) {
+		const urlParams = new URLSearchParams(window.location.search);
+		const url = window.location.href.replace(/\/$/, '');
+		const lastSeg = url.substring(url.lastIndexOf('/') + 1);
+		
+		if (urlParams.get("country")) {
+			country = countries.find(c => { return c.alpha2.toUpperCase() === urlParams.get("country").toUpperCase(); });
+		} else if (lastSeg.length == 2) {
+			country = countries.find(c => { return c.alpha2.toUpperCase() === lastSeg.toUpperCase(); });
+		}
 
-	var url = root_url + "api/channels?bookmarked=true&order_key=name";
-	if (country) {
-		setPageCountry(country);
-		url += "&country=" + country.alpha2;
+		var channel_url = root_url + "api/channels?bookmarked=true&order_key=name";
+		if (country) {
+			setPageCountry(country);
+			channel_url += "&country=" + country.alpha2;
+		}
+		load(channel_url, onLoadChannels, channelsError);
 	}
-	load(url, onLoadChannels, channelsError); 
 }
 
 function setPageCountry(country) {
@@ -37,7 +44,7 @@ function fillInDropdowns() {
 function addCountryToDropdown(country) {
 	var link = document.createElement("a");
 	link.className = "dropdown-item " + country.alpha2;
-	link.href = "ussd-codes.html?country=" + country.alpha2;
+	link.href = "ussd-codes/" + country.alpha2;
 	link.innerHTML = getCountryFlag(country) + " " + country.name;
 	var li = document.createElement("li");
 	li.append(link);
