@@ -1,4 +1,4 @@
-const root_url = "https://stage.usehover.com/";
+const root_url = "https://www.usehover.com/";
 let countries = [],	country = null, channels = [];
 
 function load(url, callback, errorCallback) { $.ajax({type: "GET", url: url, success: callback, errorCallback }); }
@@ -15,17 +15,23 @@ function loadChannels() {
 
 	var url = root_url + "api/channels?bookmarked=true&order_key=name";
 	if (country) {
-		$("#selected-country-dropdown").text(getCountryFlag(country) + " " + country.name.toUpperCase());
+		setPageCountry(country);
 		url += "&country=" + country.alpha2;
 	}
 	load(url, onLoadChannels, channelsError); 
 }
 
-function fillInDropdowns() { 
-	countries.forEach(country => addCountry(country));
+function setPageCountry(country) {
+	$("#selected-country-dropdown").text(getCountryFlag(country) + " " + country.name.toUpperCase());
+	document.title = document.title + ": " + country.name;
+	document.getElementsByTagName('meta')["description"].content = descriptions[country.alpha2.toUpperCase()];
 }
 
-function addCountry(country) {
+function fillInDropdowns() { 
+	countries.forEach(country => addCountryToDropdown(country));
+}
+
+function addCountryToDropdown(country) {
 	var link = document.createElement("a");
 	link.className = "dropdown-item " + country.alpha2;
 	link.href = "ussd-codes.html?country=" + country.alpha2;
