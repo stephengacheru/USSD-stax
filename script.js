@@ -44,7 +44,7 @@ function fillInDropdowns() {
 function addCountryToDropdown(country) {
 	var link = document.createElement("a");
 	link.className = "dropdown-item " + country.alpha2;
-	link.href = "ussd-codes/" + country.alpha2;
+	link.href = "/ussd-codes/" + country.alpha2;
 	link.innerHTML = getCountryFlag(country) + " " + country.name;
 	var li = document.createElement("li");
 	li.append(link);
