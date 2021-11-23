@@ -24,7 +24,10 @@ function loadChannels() {
 function setPageCountry(country) {
 	$("#selected-country-dropdown").text(getCountryFlag(country) + " " + country.name.toUpperCase());
 	document.title = document.title + ": " + country.name;
-	document.getElementsByTagName('meta')["description"].content = descriptions[country.alpha2.toUpperCase()];
+	if (descriptions && descriptions[country.alpha2.toUpperCase()]) {
+		$("#custom-description").html(descriptions[country.alpha2.toUpperCase()]);
+		document.getElementsByTagName('meta')["description"].content = descriptions[country.alpha2.toUpperCase()];
+	}
 }
 
 function fillInDropdowns() { 
