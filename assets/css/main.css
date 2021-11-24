@@ -315,7 +315,9 @@ a:hover{
 
  .ussd-country-dropdown-container  .dropdown-menu li a{
     font: 900 italic 55px Effra, sans-serif;
-    white-space: pre-wrap;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
  }
 
  .ussd-country-dropdown-container  .dropdown-menu li a img{
