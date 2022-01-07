@@ -58,18 +58,25 @@ function fillInList() {
 }
 
 function addChannel(channel) {
+	var tr = document.createElement("tr");
+	tr.append(getCodeCell(channel), getNameCell(channel));
+	$("#channel-list").append(tr);
+}
+
+function getCodeCell(channel) {
+	var cell = document.createElement("td");
 	var link = document.createElement("a");
 	link.href = "tel:" + channel.root_code.replace("#", "%23");
 	link.innerHTML = channel.root_code;
-	var li = document.createElement("li");
-	li.append(link, getChannelName(channel));
-	$("#channel-list").append(li);
+	cell.append(link);
+	return cell;
 }
 
-
-function getChannelName(channel) {
-	var name = " " + channel.name;
-	return country == null ? name + " " + channel.country_alpha2.toUpperCase() : name;
+function getNameCell(channel) {
+	var cell = document.createElement("td");
+	var name = channel.name;
+	cell.append(country == null ? name + " " + channel.country_alpha2.toUpperCase() : name);
+	return cell;
 }
 
 function getCountryFlag(country) {

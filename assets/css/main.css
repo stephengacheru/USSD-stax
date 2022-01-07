@@ -834,10 +834,14 @@ a:hover{
     line-height: 65px;
 }
 
-.ussd-list li{
-    font-size: 21px;
-    padding-bottom: 20px;
+.ussd-list td:first-child {
     padding-left: 60px;
+}
+
+.ussd-list td {
+    padding-bottom: 20px;
+    font-size: 21px;
+    white-space: nowrap;
 }
 
 
